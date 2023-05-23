@@ -10,6 +10,9 @@ Day has following states:
 * CENTER - state responsoble for going to center
 * SHOP - state responsible for shopping
 * VIDEO - state responsible for watching videos
+* RAIN - state responsible for rain
+* CALL - state responsible for sudden work call
+* ALARM - state responsible for air alarm
 
 ### Simulation
 Automata starts from state START which is our starting point. It inevitably will get to sleep state( some activities is possible because of random event ). Sleep will have from 5 - 10 hours, depending on random. Than after waking up automata will get in EAT state, from which it can go almost anywhere, depending on random factor and exrta variables.
