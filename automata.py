@@ -82,6 +82,22 @@ class DayAutomate():
         else:
             self.state = "SLEEP"
 
+    def alarm(self, choice, hour):
+        """ ALARM state """
+        print(hour, "Air alarm, sitting in shelter ...")
+        if choice <= 0.1:
+            self.state = "SHOP"
+        else:
+            self.state = "STUDY"
+
+    def rain(self, choice):
+        """ RAIN state """
+        print("Raining ... ")
+        if choice <= 0.1:
+            self.state = "VIDEO"
+        else:
+            self.state = "STUDY"
+
     def studing(self, choice, hour):
         """ STUDY state """
         print(hour, "Studing ...")
@@ -97,6 +113,10 @@ class DayAutomate():
 
         elif (0.9 < choice) or self.hungry:
             self.state = "EAT"
+    def call(self):
+        """ CALL state """
+        print("Sudden call for work")
+        self.state = "STUDY"
 
 
     def simulate(self):
@@ -110,14 +130,30 @@ class DayAutomate():
                 self.exhausted = True
                 self.sleepy = True
 
-            elif hour == 14 or hour == 19:
+            if hour == 14 or hour == 19:
                 self.state = "EAT"
+
+            if random() <= 0.05:
+                self.state = "ALARM"
+
+            if random() <= 0.05 and self.state != "SLEEP":
+                self.state = "RAIN"
+                self.rain(choice)
+
+            if random() <= 0.05:
+                self.state = "CALL"
+                self.call()
+
 
             if self.state == "START":
                 self.starting(choice)
 
+            elif self.state == "ALARM":
+                self.alarm(choice, hour)
+
             elif self.state == "VIDEO":
                 self.watching_videos(hour)
+
 
             elif self.state == "SLEEP":
                 self.sleeping(hour)
