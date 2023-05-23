@@ -140,7 +140,7 @@ class DayAutomate():
                 self.state = "RAIN"
                 self.rain(choice)
 
-            if random() <= 0.05:
+            if random() <= 0.05 and hour >= 8:
                 self.state = "CALL"
                 self.call()
 
