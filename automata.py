@@ -32,7 +32,7 @@ class DayAutomate():
             self.state = "SHOP"
 
 
-        elif 0.5 < choice:
+        else:
             self.state = "STUDY"
 
 
@@ -86,15 +86,14 @@ class DayAutomate():
         """ STUDY state """
         print(hour, "Studing ...")
         if choice <= 0.5:
-            pass
-            # if random() <= 0.03:
-            #     self.hungry = True
+            if random() <= 0.1:
+                self.hungry = True
         elif 0.5 < choice <= 0.7:
             self.state = "VIDEO"
         elif 0.7 < choice <= 0.9:
             self.state = "SHOP"
-            # if random() <= 0.03:
-            #     self.hungry = True
+            if random() <= 0.1:
+                self.hungry = True
 
         elif (0.9 < choice) or self.hungry:
             self.state = "EAT"
