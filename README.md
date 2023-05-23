@@ -27,5 +27,6 @@ There are three extra variables which influence on decisions:
 ![image](https://github.com/maksDev123/automata/assets/116755445/0c2ad60a-6a18-4311-b46f-dd9519115a1c)
 
 ### Result
-![image](https://github.com/maksDev123/automata/assets/116755445/a4b37602-3ecb-4f2a-a63d-725439d5bc1d)
+![image](https://github.com/maksDev123/automata/assets/116755445/1a8e1db1-bf03-429a-9562-4c228f219d46)
+
 
