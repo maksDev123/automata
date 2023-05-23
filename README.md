@@ -12,7 +12,7 @@ Day has following states:
 * VIDEO - state responsible for watching videos
 
 ### Simulation
-Automata starts from state START which is our starting point. It inevitably will get to sleep state( some activities is possible because of random event ). Sleep will have from 5 - 10 hours, depending on random. Than after waking up automata will get in EAT state, from which it can go almost anywhere, depending on random.
+Automata starts from state START which is our starting point. It inevitably will get to sleep state( some activities is possible because of random event ). Sleep will have from 5 - 10 hours, depending on random. Than after waking up automata will get in EAT state, from which it can go almost anywhere, depending on random factor and exrta variables.
 
 ### Extra variables
 There are three extra variables which influence on decisions:
