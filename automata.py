@@ -6,18 +6,25 @@ class DayAutomate():
     def __init__(self) -> None:
         self.state = "START"
         self.hungry = False
-        self.sleepy = False
+        self.sleepy = True
         self.hour_sleep = 0
+        self.exhausted = False
         self.needed_sleep = randint(5, 10)
 
     def watching_videos(self, hour):
         """ VIDEO state """
         print(hour, "Watching videos ...")
-        self.state = "EAT"
+        if self.sleepy:
+            self.state = "SLEEP"
+        else:
+            self.exhausted = False
+            self.state = "WALK"
 
     def eating(self, choice, hour):
         """ EAT state """
         print(hour, "Eating ...")
+
+        self.hungry = False
         if choice <= 0.1:
             self.state = "WALK"
 
@@ -27,7 +34,7 @@ class DayAutomate():
 
         elif 0.5 < choice:
             self.state = "STUDY"
-        self.hungry = False
+
 
 
     def go_center(self, choice, hour):
@@ -62,15 +69,14 @@ class DayAutomate():
             self.sleepy = False
             self.hungry = True
 
-        elif self.sleepy:
-            self.state = "EAT"
-        else:
+        if self.sleepy:
             self.state = "SLEEP"
             self.hour_sleep += 1
+        else:
+            self.state = "EAT"
 
     def starting(self, choice):
         """ START state """
-
         if choice <= 0.1:
             self.state = "VIDEO"
         else:
@@ -79,16 +85,18 @@ class DayAutomate():
     def studing(self, choice, hour):
         """ STUDY state """
         print(hour, "Studing ...")
-        if choice <= 0.7:
-            if random() <= 0.1:
-                self.hungry = True
-
+        if choice <= 0.5:
+            pass
+            # if random() <= 0.03:
+            #     self.hungry = True
+        elif 0.5 < choice <= 0.7:
+            self.state = "VIDEO"
         elif 0.7 < choice <= 0.9:
             self.state = "SHOP"
-            if random() <= 0.1:
-                self.hungry = True
+            # if random() <= 0.03:
+            #     self.hungry = True
 
-        elif 0.9 < choice or self.hungry:
+        elif (0.9 < choice) or self.hungry:
             self.state = "EAT"
 
 
@@ -100,8 +108,10 @@ class DayAutomate():
 
             if hour == 23:
                 self.state = "SLEEP"
+                self.exhausted = True
+                self.sleepy = True
 
-            elif self.hungry or hour == 14 or hour == 19:
+            elif hour == 14 or hour == 19:
                 self.state = "EAT"
 
             if self.state == "START":
